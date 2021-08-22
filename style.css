@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Hammersmith+One&family=Open+Sans:wght@300&display=swap');
+
+body {
+    background-color: #c1fdf4;
+}
+
+#nav {
+    background-color: rgba(13, 156, 144, 1);
+    overflow: hidden;
+    font-family: open sans;
+    list-style:none;
+}
+#nav a {
+    display:block;
+    text-align:center;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+  }
