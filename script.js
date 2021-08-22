@@ -8,7 +8,7 @@ function message() {
   var state = states[Math.floor(Math.random() * states.length)];
   space.append(`
     <h2> Hi ${name}, thanks for wanting to learn more! <br> You should find ${state} on the map! </h2>
-    <img class="logo-result" src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+    <img class="logo-result" src="logo.png">
   `)
   event.target.parentNode.remove();
   event.preventDefault();

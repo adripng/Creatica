@@ -4,6 +4,7 @@ body {
   background-color: #d7f9f4;
   font-family: open sans;
   letter-spacing: .7px;
+  font-size: 15px
 }
 .page {
   margin: 3em;
@@ -13,12 +14,19 @@ h1 {
   font-size: 60px;
 }
 .blurb {
-  border: 7.5px solid salmon;
+  border: 5px solid lightcoral;
   margin: 30px;
   padding: 20px;
   border-radius: 15px;
 }
-
+.map {
+  width: 1000px;
+  border-radius: 20px;
+  border: 5px solid lightcoral;
+}
+.info {
+  height: 650px;
+}
 
 form {
   font-size: 25px;
@@ -48,13 +56,20 @@ form {
 .btn:hover {
   opacity: 0.6;
 }
-
+li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgba(13, 156, 144, 1);
+}
+li a:hover {
+  text-decoration: underline;
+}
 
 nav {
-    background-color: rgba(13, 156, 144, 1);
-    overflow: hidden;
-    font-family: open sans;
-    margin: -10px;
+  background-color: rgba(13, 156, 144, 1);
+  overflow: hidden;
+  font-family: open sans;
+  margin: -10px;
 }
 nav a {
   float: left;
@@ -71,3 +86,17 @@ nav a.active {
   color: black;
 }
 
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+}
+.left {
+  padding-right: 60px;
+  padding-left: 60px;
+}
+.right {
+  padding-left: 60px;
+  padding-right: 60px;
+}
