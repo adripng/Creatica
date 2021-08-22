@@ -1,16 +1,39 @@
 import json
 import plotly.express as px
 import pandas as pd
+import pickle
 
-with open(gz_2010_us_040_00_5m.json) as response:
-    states = json.load(response)
+with open("gz_2010_us_040_00_5m.json") as file:
+    states = json.load(file)
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
-    dtype={"fips": str})
+database = pickle.load(open("database.pickle", "rb"))
+total = 0
+for state in database:
+    total += len(database[state])
 
-fig = px.choropleth(df, geojson=states, locations='fips', color='unemp',
-    color_continuous_scale="Viridis",
-    range_color=(0, 12),
+data = {}
+for state in database:
+    total += len(database[state])
+    if "locations" not in data:
+        data["locations"] = []
+        data["nums"] = []
+    else:
+        data["locations"].append(state)
+        data["nums"].append(len(database[state]) / total * 100)
+print(data)
+
+data["text"] = []
+
+df = pd.DataFrame(data)
+# df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+#     dtype={"fips": str})
+print(df)
+
+fig = px.choropleth(df, geojson=states, locations='locations', locationmode="USA-states", color='nums',
+    color_continuous_scale="tealrose",
+    range_color=(0, 15),
+    hover_name='locations',
+    hover_data = 'text',
     scope="usa",
     labels={'unemp':'unemployment rate'},                 
     )

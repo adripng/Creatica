@@ -1,3 +1,4 @@
+from os import stat
 import numpy as np
 import csv
 import pickle
@@ -48,24 +49,28 @@ print(len(endangeredRows))
 database = {}
 for row in concernRows:
     code = row[0][:4]
-    state = parkRows[code][1]
+    states = parkRows[code][1].split(', ')
     info = row[2:7]
     info.append("Species of Concern")
-    if state not in database:
-        database[state] = info
-    else:
-        database[state].append(info)
+    for state in states:
+        if state not in database:
+            database[state] = info
+        else:
+            database[state].append(info)
 
 for row in endangeredRows:
     code = row[0][:4]
-    state = parkRows[code][1]
+    states = parkRows[code][1].split(', ')
     info = row[2:7]
     info.append("Endangered")
-    if state not in database:
-        database[state] = info
-    else:
-        database[state].append(info)
+    for state in states:
+        if state not in database:
+            database[state] = info
+        else:
+            database[state].append(info)
+
 
 #print(database["CA"][:20])
 # database organized by state, len 27
-print(len(database))
+print(database.keys())
+pickle.dump(database, open("database.pickle", "wb"))
