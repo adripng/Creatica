@@ -71,6 +71,6 @@ for row in endangeredRows:
 
 
 #print(database["CA"][:20])
-# database organized by state, len 27
+# database organized by state, len 25
 print(database.keys())
 pickle.dump(database, open("database.pickle", "wb"))
